@@ -22,10 +22,10 @@ public class Product implements Serializable{
 	@Column(name = "Id_Product")
 	private int id;
 
-	@Column(name = "Name_Product", length = 20, nullable = false, unique = true)
+	@Column(name = "Name_Product")
 	private String name;
 
-	@Column(name = "Description_Product", length = 80, nullable = false, unique = true)
+	@Column(name = "Description_Product")
 	private String description;
 
 	public int getId() {

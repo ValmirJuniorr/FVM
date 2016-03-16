@@ -13,7 +13,6 @@ public class ProductBean {
 	
 	@EJB
 	private ProductRepository productRepository;
-	private List<Product> products=null;
 	
 
 	private Product product=new Product();
@@ -21,8 +20,7 @@ public class ProductBean {
 	public void add() {
 		productRepository.add(product);
 		System.out.println(product);
-		product=new Product();
-		products=null;
+		product=new Product();		
 	}
 	
 	
@@ -36,15 +34,6 @@ public class ProductBean {
 
 
 	public List<Product> getProducts() {
-		if(products==null){
-			products= productRepository.getAll();
-		}
-		return products;
+		return productRepository.getProducts();
 	}
-	
-
-	public void setProducts(List<Product> products) {
-		this.products = productRepository.getAll();
-	}	
-
 }
