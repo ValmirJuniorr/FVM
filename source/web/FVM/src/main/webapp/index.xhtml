@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<head>
+<title>Produtos</title>
+</head>
+
+<body bgcolor="#ffffff">
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Produto:" for="product" />
+			<h:inputText value="#{productBean.product.name}" id="product"/>
+
+			<h:outputLabel value="Descrição:" for="description" />
+			<h:inputText value="#{productBean.product.description}"
+				id="description"/>
+			<h:commandButton value="Adicionar"
+			action="#{productBean.add}"/>
+		</h:panelGrid>
+		
+	</h:form>	
+	<p:dataTable id="productDT" value="#{productBean.products}" var="product" emptyMessage="Não existe Produtos">
+		<p:column headerText="Nome">
+			<h:outputText value="#{product.name}"/> 
+		</p:column>
+		<p:column headerText="Descrição">
+			<h:outputText value="#{product.description}"/> 
+		</p:column>
+	</p:dataTable>
+</body>
+
+</html>
