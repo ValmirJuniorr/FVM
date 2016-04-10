@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 
 import model.Product;
 
@@ -18,7 +17,7 @@ public class ProductRepository {
 	//private List<Product> products=null;
 	
 
-	@Transactional
+	
 	public void add(Product product) {
 		manager.merge(product);
 	}
@@ -35,6 +34,18 @@ public class ProductRepository {
 		}
 		return products;*/
 		return getAll();
+	}
+
+	public void delete(Product product) {
+		manager.remove(manager.contains(manager.contains(product) ? product : manager.merge(product)));
+		System.out.println("oi ta auqi");
+	}
+		
+	
+
+	public void update(Product product) {
+		manager.merge(product);
+		
 	}
 	
 /*

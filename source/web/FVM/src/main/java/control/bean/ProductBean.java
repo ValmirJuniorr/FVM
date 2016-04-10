@@ -28,8 +28,15 @@ public class ProductBean implements Serializable {
 	
 	public void add() {
 		productRepository.add(product);
-		System.out.println(product);
-		product=null;		
+		product=new Product();;	
+		
+	}
+	public void delete() {
+		productRepository.delete(product);
+		
+	}
+	public void update() {
+		productRepository.update(product);		
 	}
 	
 	
