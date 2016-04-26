@@ -1,4 +1,4 @@
-package model.dao.repository;
+package model.dao;
 
 import java.util.List;
 
@@ -6,18 +6,19 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import model.Product;
 
 @Stateless
-public class ProductRepository {
+public class ProductDao {
 
 	@PersistenceContext
 	private EntityManager manager;
 	//private List<Product> products=null;
 	
 
-	
+	@Transactional
 	public void add(Product product) {
 		manager.merge(product);
 	}
@@ -28,21 +29,15 @@ public class ProductRepository {
 		return query.getResultList();
 	}
 	
-	public List<Product> getProducts() {
-		/*if(products==null){
-		setProducts(getAll());
-		}
-		return products;*/
-		return getAll();
-	}
 
+	@Transactional
 	public void delete(Product product) {
-		manager.remove(manager.contains(manager.contains(product) ? product : manager.merge(product)));
-		System.out.println("oi ta auqi");
+		this.manager.remove(this.manager.contains(product) ? product : manager.merge(product));
 	}
 		
 	
 
+	@Transactional
 	public void update(Product product) {
 		manager.merge(product);
 		

@@ -7,39 +7,43 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
 import model.Product;
-import model.dao.repository.ProductRepository;
+import model.dao.ProductDao;
+
 import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class ProductBean implements Serializable {	
-	
+public class ProductBean implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6361711547368565353L;
 
-
 	@EJB
-	private ProductRepository productRepository;
-	
+	private ProductDao productDao;
 
-	private Product product=new Product();
-	
+	private Product product = new Product();
+
 	public void add() {
-		productRepository.add(product);
-		product=new Product();;	
-		
+		this.productDao.add(product);
+		product = new Product();
 	}
-	public void delete() {
-		productRepository.delete(product);
-		
+	/*
+
+	public String delete(Product product) {
+		productDao.delete(product);
+		return "index?faces-redirect=true";
+
+	}*/
+	public void delete(Product product) {
+		productDao.delete(product);
 	}
+
 	public void update() {
-		productRepository.update(product);		
+		productDao.update(product);
 	}
-	
-	
+
 	public Product getProduct() {
 		return product;
 	}
@@ -48,8 +52,7 @@ public class ProductBean implements Serializable {
 		this.product = product;
 	}
 
-
 	public List<Product> getProducts() {
-		return productRepository.getAll();
+		return productDao.getAll();
 	}
 }

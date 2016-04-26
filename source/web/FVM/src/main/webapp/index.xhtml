@@ -12,17 +12,17 @@
 </h:head>
 
 <h:body bgcolor="#ffffff">
-	<h:form>
+	<h:form id="products">
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Produto:" for="product" />
 			<h:inputText value="#{productBean.product.name}" id="product" />
-
 			<h:outputLabel value="Descrição:" for="description" />
 			<h:inputText value="#{productBean.product.description}"
 				id="description" />
+			<h:outputLabel value="Value" for="price" />
+			<h:inputText value="#{productBean.product.price}" id="price" />
 			<h:commandButton value="Adicionar" action="#{productBean.add}" />
 		</h:panelGrid>
-
 	</h:form>
 	<p:dataTable id="productDT" value="#{productBean.products}"
 		var="product" emptyMessage="Não existe Produtos">
@@ -32,9 +32,13 @@
 		<p:column headerText="Descrição">
 			<h:outputText value="#{product.description}" />
 		</p:column>
+		<p:column headerText="Preço do Produto">
+			<h:outputText value="#{product.price}" />
+		</p:column>
 		<p:column headerText="Ações">
+
 			<p:commandButton action="#{productBean.delete(product)}"
-				value="Excluir" />
+				process="products" value="Excluir" />
 		</p:column>
 	</p:dataTable>
 </h:body>
