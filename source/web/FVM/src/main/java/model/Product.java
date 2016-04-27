@@ -41,6 +41,10 @@ public class Product implements Serializable{
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name = "Itens_Products")
 	private List<Item> items;
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "Itens_Products_Additional")
+	private List<Item> itemsSdditional;
 
 	public int getId() {
 		return id;

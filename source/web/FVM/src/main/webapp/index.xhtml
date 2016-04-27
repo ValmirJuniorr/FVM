@@ -1,4 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -6,12 +9,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-
 <h:head>
 	<title>Produtos</title>
 </h:head>
 
-<h:body bgcolor="#ffffff">
+<h:body>
 	<h:form id="products">
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Produto:" for="product" />
@@ -23,24 +25,26 @@
 			<h:inputText value="#{productBean.product.price}" id="price" />
 			<h:commandButton value="Adicionar" action="#{productBean.add}" />
 		</h:panelGrid>
-	</h:form>
-	<p:dataTable id="productDT" value="#{productBean.products}"
-		var="product" emptyMessage="Não existe Produtos">
-		<p:column headerText="Nome">
-			<h:outputText value="#{product.name}" />
-		</p:column>
-		<p:column headerText="Descrição">
-			<h:outputText value="#{product.description}" />
-		</p:column>
-		<p:column headerText="Preço do Produto">
-			<h:outputText value="#{product.price}" />
-		</p:column>
-		<p:column headerText="Ações">
+		</h:form>
+		<h:form id="listagem">
+		<p:dataTable id="productDT" value="#{productBean.products}"
+			var="product" emptyMessage="Não existe Produtos">
+			<p:column headerText="Nome">
+				<h:outputText value="#{product.name}" />
+			</p:column>
+			<p:column headerText="Descrição">
+				<h:outputText value="#{product.description}" />
+			</p:column>
+			<p:column headerText="Preço do Produto">
+				<h:outputText value="#{product.price}" />
+			</p:column>
+			<p:column headerText="Ações">
+				<p:commandButton action="#{productBean.delete(product)}" update="productDT"
+					process="products" value="Excluir" />
+			</p:column>
 
-			<p:commandButton action="#{productBean.delete(product)}"
-				process="products" value="Excluir" />
-		</p:column>
-	</p:dataTable>
+		</p:dataTable>
+	</h:form>
 </h:body>
 
 </html>

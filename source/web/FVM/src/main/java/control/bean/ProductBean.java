@@ -36,6 +36,7 @@ public class ProductBean implements Serializable {
 		return "index?faces-redirect=true";
 
 	}*/
+	
 	public void delete(Product product) {
 		productDao.delete(product);
 	}
