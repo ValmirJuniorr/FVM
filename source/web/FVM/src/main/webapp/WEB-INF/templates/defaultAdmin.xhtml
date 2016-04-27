@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title><ui:insert name="titlePage">FVM</ui:insert></title>
+</h:head>
+
+<h:body>
+	<h2>Bem vindo Ao FVM!</h2>
+
+	<p:menubar>
+		<p:menuitem value="Home" url="/index.xhtml" />
+		<p:submenu label="Usuarios">
+			<p:menuitem value="Listar" url="/admin/user/listUsers.xhtml" />
+			<p:separator />
+			<p:menuitem value="Adcionar" url="/admin/item/addUser.xhtml" />
+		</p:submenu>
+		<p:submenu label="Item">
+			<p:menuitem value="Listar" url="/admin/item/listItems.xhtml" />
+			<p:separator />
+			<p:menuitem value="Adcionar" url="/admin/item/addItem.xhtml" />
+		</p:submenu>
+
+		<p:submenu label="Produto">
+			<p:menuitem value="Listar" url="/admin/product/listProducts.xhtml" />
+		</p:submenu>
+	</p:menubar>
+
+	<ui:insert name="bodyPage"></ui:insert>
+
+
+</h:body>
+
+</html>
