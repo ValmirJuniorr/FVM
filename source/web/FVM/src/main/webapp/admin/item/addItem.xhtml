@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">	
+<ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
 
-<h:head>
-	<title>Cadastro de Itens!</title>
-</h:head>
+	<ui:define name="titlePage"> Cadastro de Itens</ui:define>
+	<ui:define name="bodyPage">
 
-<h:body>
-	<h2>Cadastro de Itens</h2>
-	<h:form id="formAddItem">
-		<p:panelGrid columns="2">
-			<p:outputLabel for="name" value="Nome do Item: " />
-			<p:inputText id="name" value="#{itemBean.item.name}"
-				pt:placeholder="Digite O nome do Item" />
-			<p:outputLabel for="price" value="Valor do Item em R$:" />
-			<p:inputText id="price" value="#{itemBean.item.price}"
-				pt:placeholder="Digite o Valor do Item" />
+		<h2>Cadastro de Itens</h2>
+		<h:form id="formAddItem">
+			<p:panelGrid columns="2">
+				<p:outputLabel for="name" value="Nome do Item: " />
+				<p:inputText id="name" value="#{itemBean.item.name}"
+					pt:placeholder="Digite O nome do Item" />
+				<p:outputLabel for="price" value="Valor do Item em R$:" />
+				<p:inputText id="price" value="#{itemBean.item.price}"
+					pt:placeholder="Digite o Valor do Item" />
 				<p:outputLabel for="description" value="Descrição" />
-			<p:inputTextarea id="description"
-				value="#{itemBean.item.description}"
-				pt:placeholder="Digite uma Descrição breve Do item!" />
-				
-		</p:panelGrid>
-		<p:panelGrid columns="2">
-			<p:column>
-				<p:commandButton value="Adicionar" action="#{itemBean.add}"
-					update="formAddItem" />
-			</p:column>
-			<p:column>
-				<p:button outcome="/admin/item/listItems.xhtml" value="Ver Itens" />
-			</p:column>
-		</p:panelGrid>
+				<p:inputTextarea id="description"
+					value="#{itemBean.item.description}"
+					pt:placeholder="Digite uma Descrição breve Do item!" />
 
-	</h:form>
+			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:column>
+					<p:commandButton value="Adicionar" action="#{itemBean.add}"
+						update="formAddItem" />
+				</p:column>
+				<p:column>
+					<p:button outcome="/admin/item/listItems.xhtml" value="Ver Itens" />
+				</p:column>
+			</p:panelGrid>
 
-</h:body>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
 </html>
