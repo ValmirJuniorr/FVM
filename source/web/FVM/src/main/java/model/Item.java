@@ -1,10 +1,13 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -22,6 +25,10 @@ public class Item {
 	
 	@Column(name = "Price_Item")
 	private Double price;
+	
+	
+	@ManyToMany(mappedBy = "items")
+	private List<Product> products;
 	
 	
 	public int getId() {
