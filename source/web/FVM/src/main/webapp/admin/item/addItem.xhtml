@@ -13,7 +13,7 @@
 
 <h:body>
 	<h2>Cadastro de Itens</h2>
-	<h:form>
+	<h:form id="formAddItem">
 		<p:panelGrid columns="2">
 			<p:outputLabel for="name" value="Nome do Item: " />
 			<p:inputText id="name" value="#{itemBean.item.name}"
@@ -21,10 +21,20 @@
 			<p:outputLabel for="price" value="Valor do Item em R$:" />
 			<p:inputText id="price" value="#{itemBean.item.price}"
 				pt:placeholder="Digite o Valor do Item" />
+				<p:outputLabel for="description" value="Descrição" />
+			<p:inputTextarea id="description"
+				value="#{itemBean.item.description}"
+				pt:placeholder="Digite uma Descrição breve Do item!" />
+				
 		</p:panelGrid>
 		<p:panelGrid columns="2">
-			<p:commandButton value="Adicionar" action="#{itemBean.add}" />
-			<p:commandButton value="Voltar" action="#{itemBean.goToList}" />
+			<p:column>
+				<p:commandButton value="Adicionar" action="#{itemBean.add}"
+					update="formAddItem" />
+			</p:column>
+			<p:column>
+				<p:button outcome="/admin/item/listItems.xhtml" value="Ver Itens" />
+			</p:column>
 		</p:panelGrid>
 
 	</h:form>

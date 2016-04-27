@@ -9,30 +9,34 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
+	<title>Lista de Itens!</title>
 </h:head>
 <h:body>
 	<h:form id="formItems">
-
 		<h1>Items</h1>
-		<p:button outcome="/admin/item/addItem.xhtml" value="Adcionar Item"/>
+		<p:button outcome="/admin/item/addItem.xhtml" value="Adcionar Item" />
 		<p:dataTable id="itemDT" value="#{itemBean.items}" var="item"
 			emptyMessage="Não existe Items Cadastrados">
+
 			<p:column headerText="ID">
 			#{item.id}
-		</p:column>
+			</p:column>
 			<p:column headerText="Nome">
 			#{item.name}
-		</p:column>
+			</p:column>
 			<p:column headerText="Preço em R$">
 			#{item.price}
-		</p:column>
+			</p:column>
+			<p:column headerText="Descrição">
+			#{item.description}
+			</p:column>
+
 			<p:column headerText="Ações">
-				<p:commandButton action="#{usuarioController.excluir(usuario)}"
-					value="Excluir" />
-				<p:commandButton action="#{usuarioController.irPaginaAtualizar}"
-					value="Atualizar">
-					<f:setPropertyActionListener value="#{usuario}"
-						target="#{usuarioController.usuario}" />
+				<p:commandButton action="#{itemBean.delete(item)}" value="Excluir"
+					update="itemDT" />
+				<p:commandButton value="Editar Item" action="#{itemBean.editItem()}">
+					<f:setPropertyActionListener value="#{item}"
+						target="#{itemBean.item}" />
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>

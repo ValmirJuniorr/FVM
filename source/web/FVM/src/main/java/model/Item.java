@@ -23,9 +23,11 @@ public class Item {
 	@Column(name = "Name_Item")
 	private String name;
 	
-	@Column(name = "Price_Item")
-	private Double price;
+	@Column(name = "Description_Product")
+	private String description;
 	
+	@Column(name = "Price_Item")
+	private Double price;	
 	
 	@ManyToMany(mappedBy = "items")
 	private List<Product> products;
@@ -49,6 +51,20 @@ public class Item {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	
+	
 	
 
 }

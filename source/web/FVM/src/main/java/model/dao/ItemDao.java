@@ -36,7 +36,6 @@ public class ItemDao {
 	@Transactional
 	public void update(Item item) {
 		manager.merge(item);
-
 	}
 
 	/*

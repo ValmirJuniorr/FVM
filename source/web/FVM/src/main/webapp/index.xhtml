@@ -39,7 +39,7 @@
 				<h:outputText value="#{product.price}" />
 			</p:column>
 			<p:column headerText="Ações">
-				<p:commandButton action="#{productBean.delete(product)}"
+				<p:commandButton action="#{productBean.delete(product)}" update="productDT"
 					process="products" value="Excluir" />
 			</p:column>
 
