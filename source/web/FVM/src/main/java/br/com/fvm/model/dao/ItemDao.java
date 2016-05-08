@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import br.com.fvm.model.Item;
@@ -21,11 +21,15 @@ public class ItemDao {
 	public void add(Item item) {
 		manager.merge(item);
 	}
+	
+	public Item getById(int id) {	
+		return this.manager.find(Item.class, id);
+	}
 
-	@SuppressWarnings("unchecked")
 	public List<Item> getAll() {
-		Query query = this.manager.createQuery("select i from Item i");
-		return query.getResultList();
+		String query="select i from Item i";
+		TypedQuery<Item> items=this.manager.createQuery(query, Item.class);		
+		return items.getResultList();
 	}
 
 	@Transactional

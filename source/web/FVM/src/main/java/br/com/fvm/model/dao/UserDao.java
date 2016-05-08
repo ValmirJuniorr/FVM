@@ -6,8 +6,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import br.com.fvm.model.Item;
 import br.com.fvm.model.User;
 
 @Stateless
@@ -20,11 +22,16 @@ public class UserDao {
 	public void add(User user) {
 		manager.merge(user);
 	}
+	
+	public User getById(int id) {	
+		return this.manager.find(User.class, id);
+	}
 
-	@SuppressWarnings("unchecked")
+
 	public List<User> getAll() {
-		Query query = this.manager.createQuery("select u from User u");
-		return query.getResultList();
+		String query="select u from User u";
+		TypedQuery<User> users=this.manager.createQuery(query, User.class);		
+		return users.getResultList();
 	}
 	
 
