@@ -1,4 +1,4 @@
-package control.bean;
+package br.com.fvm.control.bean;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -8,44 +8,44 @@ import javax.faces.bean.ManagedBean;
 
 import org.primefaces.context.RequestContext;
 
-import model.User;
-import model.dao.UserDao;
+import br.com.fvm.model.Item;
+import br.com.fvm.model.dao.ItemDao;
 
 import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
 @SessionScoped
-public class UserBean implements Serializable {
-	
+public class ItemBean implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6329060854449082560L;
+	private static final long serialVersionUID = 7806608884326793820L;
 
 	@EJB
-	private UserDao userDao;
+	private ItemDao itemDao;
 
-	private User user;
+	private Item item;
 	
 	@PostConstruct
 	public void init() {
-		this.user = new User();
+		this.item = new Item();
 	}
 
-	public User getUser() {
-		return user;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 
 	public void add() {
-		this.userDao.add(user);
-		String mensage = "O User: " + user.getName() + " Foi Adicionado!";
-		user = new User();
+		this.itemDao.add(item);
+		String mensage = "O item: " + item.getName() + " Foi Adicionado!";
+		item = new Item();
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
@@ -57,30 +57,31 @@ public class UserBean implements Serializable {
 	 * }
 	 */
 
-	public void delete(User user) {
-		userDao.delete(user);
-	}		
+	public void delete(Item item) {
+		itemDao.delete(item);
+	}
 
-	public String editUser() {
-		return "editUser";
+	public String editItem() {		
+		return "editItem";
 
 	}
 
 	public void update() {
-		userDao.update(user);
-		String mensage = "no update: id:"+user.getId()+ "name: "+ user.getName() + " Foi Atualizado!";
-		user = new User();
+		itemDao.update(item);
+		String mensage = "no update: id:"+item.getId()+ "name: "+ item.getName() + " Foi Atualizado!";
+		item = new Item();
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 
 	}
 
-	public List<User> getUsers() {
-		return this.userDao.getAll();
+	public List<Item> getItems() {
+		return this.itemDao.getAll();
 	}
 	
 	public String voltar(){
-		return "listUsers";
+		System.out.println("ta no volatar");
+		return "listItems";
 	}
 
 }

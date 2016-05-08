@@ -1,4 +1,4 @@
-package model;
+package br.com.fvm.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

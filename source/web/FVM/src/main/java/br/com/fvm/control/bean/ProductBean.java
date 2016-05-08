@@ -1,4 +1,4 @@
-package control.bean;
+package br.com.fvm.control.bean;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
-import model.Product;
-import model.dao.ProductDao;
+import br.com.fvm.model.Product;
+import br.com.fvm.model.dao.ProductDao;
 
 import java.io.Serializable;
 

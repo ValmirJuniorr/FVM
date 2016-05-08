@@ -1,4 +1,4 @@
-package model;
+package br.com.fvm.model;
 
 import java.util.List;
 

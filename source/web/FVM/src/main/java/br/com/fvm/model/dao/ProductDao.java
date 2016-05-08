@@ -1,4 +1,4 @@
-package model.dao;
+package br.com.fvm.model.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import model.Product;
+import br.com.fvm.model.Product;
 
 @Stateless
 public class ProductDao {
