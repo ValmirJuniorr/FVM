@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema="fvm",name = "Products")
-@SequenceGenerator(name = "ProductSequence", sequenceName = "SQ_ID_PRODUCT", allocationSize = 1)
+@SequenceGenerator(name = "ProductSequence", sequenceName = "SQ_ID_PRODUCT", allocationSize = 1, schema="fvm")
 public class Product implements Serializable{
 
 	/**
@@ -39,12 +39,12 @@ public class Product implements Serializable{
 	private Double price;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "Itens_Products")
+	@JoinTable(name = "Itens_Products", schema="fvm")
 	private List<Item> items;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "Itens_Products_Additional")
-	private List<Item> itemsSdditional;
+	@JoinTable(name = "Itens_Products_Additional", schema="fvm")
+	private List<Item> itemsAdditional;
 
 	public int getId() {
 		return id;

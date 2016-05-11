@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @Table(schema="fvm",name = "Users")
-@SequenceGenerator(name = "UserSequence", sequenceName = "SQ_ID_USER", allocationSize = 1)
+@SequenceGenerator(name = "UserSequence", sequenceName = "SQ_ID_USER", allocationSize = 1, schema="fvm")
 public class User {
 	
 		

@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(schema="fvm",name = "Orders")
-@SequenceGenerator(name = "OrderSequence", sequenceName = "SQ_ID_ORDER", allocationSize = 1)
+@SequenceGenerator(name = "OrderSequence", sequenceName = "SQ_ID_ORDER", allocationSize = 1, schema="fvm")
 
 public class Order {
 
@@ -61,7 +61,7 @@ public class Order {
 	
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "Products_Orders")
+	@JoinTable(name = "Products_Orders", schema="fvm")
 	private List<Product> products;
 
 }

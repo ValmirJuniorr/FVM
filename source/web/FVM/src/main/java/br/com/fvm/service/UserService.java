@@ -1,7 +1,9 @@
 package br.com.fvm.service;
 
 import javax.ejb.EJB;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -18,6 +20,16 @@ public class UserService {
 	@EJB
 	UserDao userDao;
 	
+	@POST
+	@Produces({ MediaType.TEXT_PLAIN+";charset=UTF-8"})
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path("/saveUser")
+	// @Produces ( MediaType.TEXT_PLAIN )
+	public String saveUser( User user) {
+		userDao.add(user);
+		return "O usuario foi adicionado com sucesso!";
+	}
+	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON+";charset=UTF-8"})
 	@Path("/getById/{id}")
@@ -27,5 +39,6 @@ public class UserService {
 		Gson gson = new Gson();
 		return gson.toJson(user);
 	}
+	
 
 }

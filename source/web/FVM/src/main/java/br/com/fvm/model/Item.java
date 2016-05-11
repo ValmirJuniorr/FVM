@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema="fvm",name = "Items")
-@SequenceGenerator(name = "ItemSequence", sequenceName = "SQ_ID_ITEM", allocationSize = 1)
+@SequenceGenerator(name = "ItemSequence", sequenceName = "SQ_ID_ITEM", allocationSize = 1, schema="fvm")
 public class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ItemSequence")
@@ -31,6 +31,9 @@ public class Item {
 	
 	@ManyToMany(mappedBy = "items")
 	private List<Product> products;
+	
+	@ManyToMany(mappedBy = "itemsAdditional")
+	private List<Product> productsCustom;
 	
 	
 	public int getId() {
