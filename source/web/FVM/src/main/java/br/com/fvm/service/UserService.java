@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -22,12 +23,13 @@ public class UserService {
 	
 	@POST
 	@Produces({ MediaType.TEXT_PLAIN+";charset=UTF-8"})
-	@Consumes({MediaType.APPLICATION_JSON})
+	@Consumes("application/json")
 	@Path("/saveUser")
 	// @Produces ( MediaType.TEXT_PLAIN )
 	public String saveUser( User user) {
+		System.out.println(user);
 		userDao.add(user);
-		return "O usuario foi adicionado com sucesso!";
+		return "O usuario"+user.getName()+" foi adicionado com sucesso!";
 	}
 	
 	@GET

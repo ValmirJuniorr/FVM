@@ -46,7 +46,7 @@ public class UserBean implements Serializable {
 		this.userDao.add(user);
 		String mensage = "O User: " + user.getName() + " Foi Adicionado!";
 		user = new User();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "OperaÃ§Ã£o Realizada Com sucesso", mensage);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
 	/*
@@ -70,7 +70,7 @@ public class UserBean implements Serializable {
 		userDao.update(user);
 		String mensage = "no update: id:"+user.getId()+ "name: "+ user.getName() + " Foi Atualizado!";
 		user = new User();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "OperaÃ§Ã£o Realizada Com sucesso", mensage);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 
 	}
