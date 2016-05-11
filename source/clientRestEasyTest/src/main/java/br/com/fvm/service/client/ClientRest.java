@@ -23,7 +23,7 @@ public class ClientRest {
 	public static void main(String[] args) {
 		
 		ResteasyClient client = new ResteasyClientBuilder().build();
-		ResteasyWebTarget target = client.target("http://localhost:8080/FVM/service/user/getById/4");
+		ResteasyWebTarget target = client.target("http://localhost:8080/FVM/service/user/getById/1");
 		Response response = target.request().get();
 		String value = response.readEntity(String.class);
 		Gson gson = new Gson();
@@ -34,7 +34,7 @@ public class ClientRest {
 		System.out.println(user);
 		
 		User userPost=new User();
-		userPost.setId(6);
+		//userPost.setId(6);
 		userPost.setName("novo Usuario");
 		userPost.setEmail("nomo_email.novo");
 		userPost.setPassowrd("1234");
@@ -46,7 +46,9 @@ public class ClientRest {
 		 
          target = client.target("http://localhost:8080/FVM/service/user/saveUser");  
          response=target.request().post(userJson);
+         value = response.readEntity(String.class);
          response.close();
+        System.out.println("retornou: "+value);
 	}
 
 }

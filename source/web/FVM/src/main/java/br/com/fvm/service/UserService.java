@@ -26,10 +26,12 @@ public class UserService {
 	@Consumes("application/json")
 	@Path("/saveUser")
 	// @Produces ( MediaType.TEXT_PLAIN )
-	public String saveUser( User user) {
+	public String saveUser( String  body) {
+		Gson gson=new Gson();
+		User user=gson.fromJson(body, User.class);
 		System.out.println(user);
 		userDao.add(user);
-		return "O usuario"+user.getName()+" foi adicionado com sucesso!";
+		return "O usuario -> "+user.getName()+" foi adicionado com sucesso!";
 	}
 	
 	@GET
