@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 
+import org.primefaces.context.RequestContext;
+
 import br.com.fvm.model.Product;
+import br.com.fvm.model.User;
 import br.com.fvm.model.dao.ProductDao;
 
 import java.io.Serializable;
@@ -27,7 +31,10 @@ public class ProductBean implements Serializable {
 
 	public void add() {
 		this.productDao.add(product);
-		product = new Product();
+		String mensage = "O Produto: "+ product.getName() + " Foi adcionado!";
+		product = new Product();		
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
+		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
 	/*
 
@@ -39,10 +46,17 @@ public class ProductBean implements Serializable {
 	
 	public void delete(Product product) {
 		productDao.delete(product);
+		String mensage = "O Produto: "+ product.getName() + " Foi Deletado!";
+		product = new Product();		
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
+		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
 
 	public void update() {
 		productDao.update(product);
+		String mensage = "O Produto: "+ product.getName() + " Foi Atualizado!";
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
+		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
 
 	public Product getProduct() {
@@ -56,4 +70,14 @@ public class ProductBean implements Serializable {
 	public List<Product> getProducts() {
 		return productDao.getAll();
 	}
+	
+	public String editProduct() {
+		return "editProduct";
+	}
+
+
+	public String voltar(){
+		return "listProducts";
+	}
+	
 }

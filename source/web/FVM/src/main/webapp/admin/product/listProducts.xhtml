@@ -12,19 +12,9 @@
 <ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
 	<ui:define name="titlePage"> Produtos</ui:define>
 	<ui:define name="bodyPage">
-		<h:form id="products">
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Produto:" for="product" />
-				<h:inputText value="#{productBean.product.name}" id="product" />
-				<h:outputLabel value="Descrição:" for="description" />
-				<h:inputText value="#{productBean.product.description}"
-					id="description" />
-				<h:outputLabel value="Value" for="price" />
-				<h:inputText value="#{productBean.product.price}" id="price" />
-				<h:commandButton value="Adicionar" action="#{productBean.add}" />
-			</h:panelGrid>
-		</h:form>
-		<h:form id="listagem">
+		<h1>Produtos</h1>
+		<p:button outcome="/admin/product/addProduct.xhtml" value="Adcionar Produtos" />
+		<h:form id="formPrducts">
 			<p:dataTable id="productDT" value="#{productBean.products}"
 				var="product" emptyMessage="Não existe Produtos">
 				<p:column headerText="Nome">
@@ -36,11 +26,16 @@
 				<p:column headerText="Preço do Produto">
 					<h:outputText value="#{product.price}" />
 				</p:column>
+				
 				<p:column headerText="Ações">
-					<p:commandButton action="#{productBean.delete(product)}"
-						update="productDT" process="products" value="Excluir" />
+					<p:commandButton action="#{productBean.delete(product)}" value="Excluir"
+						update="productDT" />
+					<p:commandButton value="Editar Produto" action="#{productBean.editProduct()}"
+						ajax="false">
+						<f:setPropertyActionListener value="#{product}"
+							target="#{productBean.product}" />
+					</p:commandButton>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>

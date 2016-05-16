@@ -60,27 +60,25 @@ public class UserBean implements Serializable {
 	public void delete(User user) {
 		userDao.delete(user);
 	}		
-
-	public String editUser() {
-		return "editUser";
-
-	}
-
-	public void update() {
-		userDao.update(user);
-		String mensage = "no update: id:"+user.getId()+ "name: "+ user.getName() + " Foi Atualizado!";
-		user = new User();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
-		RequestContext.getCurrentInstance().showMessageInDialog(message);
-
-	}
-
+	
 	public List<User> getUsers() {
 		return this.userDao.getAll();
 	}
-	
+
+	public String editUser() {
+		return "editUser";
+	}
+
+
 	public String voltar(){
 		return "listUsers";
 	}
+	
+	public void update() {
+		userDao.update(user);
+		String mensage = "no update: id:"+user.getId()+ "name: "+ user.getName() + " Foi Atualizado!";
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
+		RequestContext.getCurrentInstance().showMessageInDialog(message);
+	}	
 
 }
