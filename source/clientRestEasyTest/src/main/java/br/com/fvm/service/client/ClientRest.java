@@ -1,5 +1,8 @@
 package br.com.fvm.service.client;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -9,6 +12,7 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import br.com.fvm.model.User;
 
@@ -27,11 +31,15 @@ public class ClientRest {
 		// user.setEmail("valmir_junyor@hotmail.com");
 		// user.setPassowrd("1234");
 		// user.setLogin("uhuh");		
-		get(7);
+		//getOne(7);
 		//add(user);
 		//update(user);
 		//delete(4);
-		
+		List<User> users=getAll();
+		for (User user : users) {
+			System.out.println("valor do Usuario: "+user);
+		}
+		System.out.println(users.size());
 	}
 	
 	public static void add(User user){
@@ -69,15 +77,26 @@ public class ClientRest {
 		System.out.println("retornou: " + value);
 	}
 	
-	public static User get(int id){
+	public static User getOne(int id){
 		Gson gson = new Gson();
 		ResteasyClient client = new ResteasyClientBuilder().build();
-		ResteasyWebTarget target = client.target("http://localhost:8080/FVM/service/user/getById/"+id);
+		ResteasyWebTarget target = client.target("http://localhost:8080/FVM/service/user/getOne/"+id);
 		Response response = target.request().get();
 		String value = response.readEntity(String.class);		
 		User user = gson.fromJson(value, User.class);
 		System.out.println(user);
 		return user;
+	}
+	
+	public static List<User> getAll(){
+		Gson gson = new Gson();
+		ResteasyClient client = new ResteasyClientBuilder().build();
+		ResteasyWebTarget target = client.target("http://localhost:8080/FVM/service/user/getAll");
+		Response response = target.request().get();
+		String value = response.readEntity(String.class);
+		Type listType = new TypeToken<List<User>>(){}.getType();
+		List<User> users = gson.fromJson(value, listType);		
+		return users;
 	}
 
 }

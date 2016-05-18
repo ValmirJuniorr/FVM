@@ -1,7 +1,5 @@
 package br.com.fvm.service;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -61,7 +59,7 @@ public class UserService {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON+";charset=UTF-8"})
-	@Path("/getById/{id}")
+	@Path("/getOne/{id}")
 	// @Produces ( MediaType.TEXT_PLAIN )
 	public String getUserById( @PathParam("id") int id) {
 		User user= userDao.getById(id);
