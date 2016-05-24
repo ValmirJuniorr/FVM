@@ -1,4 +1,4 @@
-package com.example.sitioibarreiras.fvm;
+package br.com.fvm;
 
 import org.junit.Test;
 

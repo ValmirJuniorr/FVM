@@ -1,4 +1,4 @@
-package com.example.sitioibarreiras.fvm;
+package br.com.fvm;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
