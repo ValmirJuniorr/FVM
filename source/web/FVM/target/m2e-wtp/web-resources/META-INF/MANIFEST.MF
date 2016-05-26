@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: Douglas
 Build-Jdk: 1.8.0_91
+=======
+Built-By: Valmir
+Build-Jdk: 1.8.0_73
+>>>>>>> bd029dec9946c05dca33e0b505edfbd4bff9faef
 Created-By: Maven Integration for Eclipse
 

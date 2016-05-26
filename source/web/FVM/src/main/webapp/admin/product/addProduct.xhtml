@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
+
+	<ui:define name="titlePage"> Cadastro de Produtos</ui:define>
+	<ui:define name="bodyPage">
+
+		<h2>Cadastro de Produtos</h2>
+		<h:form id="formProducts">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Produto:" for="product" />
+				<p:inputText value="#{productBean.product.name}" id="product"				 
+				pt:placeholder="Digite O nome do Produto"/>
+				
+				<p:outputLabel value="Preço do Produto:" for="price" />
+				<p:inputText value="#{productBean.product.price}" id="price" 
+				pt:placeholder="Digite O preço do Produto"/>
+				
+				<p:outputLabel value="Descrição:" for="description" />
+				<p:inputTextarea value="#{productBean.product.description}" id="description" 
+				pt:placeholder="Digite a descrição do Produto" />				
+			</p:panelGrid>
+			<p:panelGrid columns="2">
+				<p:column>
+					<p:commandButton value="Adicionar" action="#{productBean.add}"
+						update="formProducts" />
+				</p:column>
+				<p:column>
+					<p:button outcome="/admin/product/listProducts.xhtml"
+						value="Ver Produtos" />
+				</p:column>
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -46,7 +46,7 @@ public class ItemBean implements Serializable {
 		this.itemDao.add(item);
 		String mensage = "O item: " + item.getName() + " Foi Adicionado!";
 		item = new Item();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "OperaÃ§Ã£o Realizada Com sucesso", mensage);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operaçãoo Realizada Com sucesso", mensage);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
 	/*
@@ -70,7 +70,7 @@ public class ItemBean implements Serializable {
 		itemDao.update(item);
 		String mensage = "no update: id:"+item.getId()+ "name: "+ item.getName() + " Foi Atualizado!";
 		item = new Item();
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "OperaÃ§Ã£o Realizada Com sucesso", mensage);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Operação Realizada Com sucesso", mensage);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 
 	}
@@ -80,7 +80,6 @@ public class ItemBean implements Serializable {
 	}
 	
 	public String voltar(){
-		System.out.println("ta no volatar");
 		return "listItems";
 	}
 
