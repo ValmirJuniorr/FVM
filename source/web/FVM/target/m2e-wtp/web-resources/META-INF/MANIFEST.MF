@@ -1,5 +1,15 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: Sitioi Barreiras
 Build-Jdk: 1.8.0_91
+=======
+<<<<<<< HEAD
+Built-By: Douglas
+Build-Jdk: 1.8.0_91
+=======
+Built-By: Valmir
+Build-Jdk: 1.8.0_73
+>>>>>>> bd029dec9946c05dca33e0b505edfbd4bff9faef
+>>>>>>> cef2aea93a8622c0b40a5c3231bc47177b399d39
 Created-By: Maven Integration for Eclipse
 

@@ -1,5 +1,6 @@
 package br.com.fvm.control.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,10 +11,7 @@ import javax.faces.bean.ManagedBean;
 import org.primefaces.context.RequestContext;
 
 import br.com.fvm.model.Product;
-import br.com.fvm.model.User;
 import br.com.fvm.model.dao.ProductDao;
-
-import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped

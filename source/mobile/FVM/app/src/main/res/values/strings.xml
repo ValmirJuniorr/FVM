@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <resources>
     <string name="app_name">FVM</string>
     <string name="button_send">Enviar</string>
@@ -6,3 +7,8 @@
 </resources>
 
 
+=======
+<resources>
+    <string name="app_name">FVM</string>
+</resources>
+>>>>>>> cef2aea93a8622c0b40a5c3231bc47177b399d39
