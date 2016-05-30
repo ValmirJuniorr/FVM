@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-
     public final static String EXTRA_MESSAGE = "br.com.pbldg.agoravai.MESSAGE";
 
 
@@ -14,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
 
 

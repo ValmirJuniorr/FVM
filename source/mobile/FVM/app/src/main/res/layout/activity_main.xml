@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.sitioibarreiras.fvm.MainActivity">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.example.sitioibarreiras.fvm.MainActivity"
+    android:weightSum="1">
 
 
-    <EditText android:id="@+id/edit_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="enviarMensagem"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
+        </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="395dp"
+            android:layout_height="509dp"
+            android:background="#ffffff">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="61dp"
+                    android:text="Programação Semanal"
+                    android:id="@+id/button"
+                    android:layout_gravity="left|top" />
+
+                <Button
+                    android:layout_width="192dp"
+                    android:layout_height="59dp"
+                    android:text="Nova Viagem"
+                    android:id="@+id/button2"
+                    android:layout_gravity="right|top" />
+
+                <FrameLayout
+                    android:layout_width="388dp"
+                    android:layout_height="447dp"
+                    android:layout_gravity="center_horizontal|bottom"></FrameLayout>
+        </FrameLayout>
 </LinearLayout>
