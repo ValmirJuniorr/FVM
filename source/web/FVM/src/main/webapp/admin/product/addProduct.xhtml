@@ -17,16 +17,32 @@
 		<h:form id="formProducts">
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Produto:" for="product" />
-				<p:inputText value="#{productBean.product.name}" id="product"				 
-				pt:placeholder="Digite O nome do Produto"/>
-				
+				<p:inputText value="#{productBean.product.name}" id="product"
+					pt:placeholder="Digite O nome do Produto" />
+
 				<p:outputLabel value="Preço do Produto:" for="price" />
-				<p:inputText value="#{productBean.product.price}" id="price" 
-				pt:placeholder="Digite O preço do Produto"/>
-				
+				<p:inputText value="#{productBean.product.price}" id="price"
+					pt:placeholder="Digite O preço do Produto" />
+
 				<p:outputLabel value="Descrição:" for="description" />
-				<p:inputTextarea value="#{productBean.product.description}" id="description" 
-				pt:placeholder="Digite a descrição do Produto" />				
+				<p:inputTextarea value="#{productBean.product.description}"
+					id="description" pt:placeholder="Digite a descrição do Produto" />
+					
+				<p:outputLabel for="advanced" value="Selecione os items do produto" />
+				<p:selectManyMenu id="advanced"
+					value="#{productBean.itemsSelecteds}"
+					var="itemSelected" filter="true" filterMatchMode="contains"
+					showCheckbox="true">
+					<f:selectItems value="#{productBean.items}" var="item"
+						itemLabel="#{item.name}" itemValue="#{item}" />
+
+					<p:column>
+						<h:outputText styleClass="ui-theme " />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{item.name}" />
+					</p:column>
+				</p:selectManyMenu>
 			</p:panelGrid>
 			<p:panelGrid columns="2">
 				<p:column>
@@ -38,6 +54,7 @@
 						value="Ver Produtos" />
 				</p:column>
 			</p:panelGrid>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

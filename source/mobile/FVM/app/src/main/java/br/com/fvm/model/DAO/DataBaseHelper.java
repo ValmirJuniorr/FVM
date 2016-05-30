@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL("CREATE TABLE users(_id INTEGER PRIMARY KEY," +
                 " name_user TEXT, email_user TEXT,login_user TEXT, password_user TEXT  );");
 
@@ -26,14 +27,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE items(_id INTEGER PRIMARY KEY," +
                 "name TEXT, description TEXT, price double );");
 
-        db.execSQL("CREATE TABLE orders(_id INTEGER," +
-                "_id_item INTEGER, PRIMARY KEY(_id_product,_id_item) );");
 
-        db.execSQL("CREATE TABLE items_products(_id INTEGER, " +
-                "_id_item INTEGER, PRIMARY KEY(_id_product,_id_item)," +
-                "FOREIGN KEY (_id_product )  REFERENCES products (_id)," +
-                "FOREIGN KEY (_id_item )  REFERENCES items  (_id));");
+        db.execSQL("CREATE TABLE orders(_id INTEGER,  PRIMARY KEY," +
+                "dateOpen DATE, dateRealized DATE, dateIN_ATTENDANCE DATE," +
+                "dateDELIVERED DATE, state TEXT, id_user INTEGER , id_employee INTEGER" +
+                "FOREIGN KEY (id_user) REFERENCES users (_id)" +
+                "FOREIGN KEY (id_employee) REFERENCES users (_id));");
 
+        db.execSQL("CREATE TABLE itens_products(id_item INTEGER, id_product," +
+                " PRIMARY KEY(id_item,id_product), " +
+                "FOREIGN KEY (id_item) REFERENCES items (_id) " +
+                "FOREIGN KEY (id_product) REFERENCES products (_id));");
+
+        db.execSQL("CREATE TABLE itens_products_additional(id_item INTEGER, id_product," +
+                " PRIMARY KEY(id_item,id_product), " +
+                "FOREIGN KEY (id_item) REFERENCES items (_id) " +
+                "FOREIGN KEY (id_product) REFERENCES products (_id));");
+
+        db.execSQL("CREATE TABLE products_orders(id_order INTEGER, id_product," +
+                "PRIMARY KEY(id_order,id_product), " +
+                "FOREIGN KEY (id_order) REFERENCES orders (_id) " +
+                "FOREIGN KEY (id_product) REFERENCES products (_id));");
 
     }
 
@@ -41,4 +55,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }
