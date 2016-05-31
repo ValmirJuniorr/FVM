@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+<resources>
+    <string name="app_name">FVM</string>
+    <string name="button_send">Enviar</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
+
+
+=======
 <resources>
     <string name="app_name">FVM</string>
 </resources>
+>>>>>>> cef2aea93a8622c0b40a5c3231bc47177b399d39
