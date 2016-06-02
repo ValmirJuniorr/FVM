@@ -34,12 +34,12 @@ public class ClientRest {
 		//getOne(7);
 		//add(user);
 		//update(user);
-		//delete(4);
-		List<User> users=getAll();
-		for (User user : users) {
-			System.out.println("valor do Usuario: "+user);
-		}
-		System.out.println(users.size());
+		//delete(2);
+		 List<User> users=getAll();
+		 for (User user : users) {
+		 System.out.println("valor do Usuario: "+user);
+		 }
+		 System.out.println(users.size());
 	}
 	
 	public static void add(User user){

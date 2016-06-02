@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+
 import br.com.fvm.model.Product;
 
 @Stateless
@@ -40,8 +41,11 @@ public class ProductDao {
 	@Transactional
 	public void update(Product product) {
 		manager.merge(product);
-		
-	}
+			}
+
+	public Product getById(int id) {
+		return this.manager.find(Product.class, id);
+		}
 	
 /*
 	public void setProducts(List<Product> products) {
