@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import br.com.fvm.model.ConstsFVM;
+import br.com.fvm.model.Constants;
 
 /**
  * Created by Valmir on 25/05/2016.
@@ -12,7 +12,7 @@ import br.com.fvm.model.ConstsFVM;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     public DataBaseHelper(Context context) {
-        super(context, ConstsFVM.DATA_BASE_FVM,null,ConstsFVM.VERSION_DATA_BASE_FVM);
+        super(context, Constants.DATA_BASE_FVM,null, Constants.VERSION_DATA_BASE_FVM);
     }
 
     @Override

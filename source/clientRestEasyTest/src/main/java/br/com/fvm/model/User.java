@@ -11,7 +11,7 @@ public class User {
 	
 	private String login;
 	
-	private String passowrd;
+	private String password;
 	
 	
 	
@@ -33,11 +33,11 @@ public class User {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	public String getPassowrd() {
-		return passowrd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassowrd(String passowrd) {
-		this.passowrd = passowrd;
+	public void setPassword(String passowrd) {
+		this.password = passowrd;
 	}
 	public String getEmail() {
 		return email;
@@ -47,7 +47,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [Id=" + Id + ", name=" + name + ", email=" + email + ", login=" + login + ", passowrd=" + passowrd
+		return "User [Id=" + Id + ", name=" + name + ", email=" + email + ", login=" + login + ", password=" + password
 				+ "]";
 	}
 	
