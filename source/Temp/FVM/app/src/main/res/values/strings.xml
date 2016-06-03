@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">FVM</string>
-    <string name="edit_message">Digite a Mensagem</string>
-    <string name="button_send">Enviar</string>
-    <string name="saved_high_score">highScore</string>
-</resources>

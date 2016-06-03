@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html >
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -8,44 +6,55 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-<ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
+<ui:composition template="/WEB-INF/templates/tempateDefault.xhtml">
 
 	<ui:define name="titlePage"> Cadastro de Itens</ui:define>
 	<ui:define name="bodyPage">
 
-		<h2>Cadastro de Itens</h2>
-		<h:form id="formAddUser">
-			<p:panelGrid columns="2">
-				<p:outputLabel for="name" value="Nome do Usuário: " />
-				<p:inputText id="name" value="#{userBean.user.name}"
-					pt:placeholder="Digite O nome do Usuário" />
+<div class="container ">
+		<h2>Cadastro de Usuarios</h2>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h:form id="formAddUser">
 
-				<p:outputLabel for="login" value="Login: " />
-				<p:inputText id="login" value="#{userBean.user.login}"
-					pt:placeholder="Digite O Login do Usuário" />
+					<div class="form-group">
+						<p:outputLabel for="name" value="Nome do Usuário: " />
+						<p:inputText id="name" class="form-control"	value="#{userBean.user.name}"
+						 pt:placeholder="Digite O nome do Usuário" />
+					</div>
+					<div class="form-group">
+						<p:outputLabel for="login" value="Login: " />
+						
+						<p:inputText id="login" class="form-control" value="#{userBean.user.login}"  
+						pt:placeholder="Digite O Login do Usuário" />
+					</div>
+					<div class="form-group">
+						<p:outputLabel for="password" value="Senha: " />
+						<p:inputText id="password" type="password" class="form-control"
+							value="#{userBean.user.password}"
+							pt:placeholder="Digite a Senha do Usuário" />
+					</div>
+					<div class="form-group">
 
-				<p:outputLabel for="password" value="Senha: " />
-				<p:inputText id="password" type="password"
-					value="#{userBean.user.passowrd}"
-					pt:placeholder="Digite a Senha do Usuário" />
+						<p:outputLabel for="email" value="Email: " />
+						<p:inputText id="email" type="email" class="form-control"
+							value="#{userBean.user.email}"
+							pt:placeholder="Digite o Email do Usuário" />
+					</div>
 
-				<p:outputLabel for="email" value="Email: " />
-				<p:inputText id="email" type="email"
-					value="#{userBean.user.email}"
-					pt:placeholder="Digite o Email do Usuário" />
-			</p:panelGrid>
-			<p:panelGrid columns="2">
-				<p:column>
-					<p:commandButton value="Adicionar" action="#{userBean.add}"
-						update="formAddUser"/>
-				</p:column>
-				<p:column>
-					<p:button outcome="/admin/user/listUsers.xhtml"
-						value="Ver Usuários" />
-				</p:column>
-			</p:panelGrid>
+					<div class="form-group">
 
-		</h:form>
+						<p:commandButton value="Adicionar" action="#{userBean.add}"
+							update="formAddUser" />
+
+						<p:button outcome="/admin/user/listUsers.xhtml"
+							value="Ver Usuários" />
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+		</div>
 	</ui:define>
 </ui:composition>
 

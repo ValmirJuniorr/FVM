@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -8,36 +6,56 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-<ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
+<ui:composition template="/WEB-INF/templates/tempateDefault.xhtml">
 	<ui:define name="titlePage"> Lista de Usuários</ui:define>
 	<ui:define name="bodyPage">
-		<h:form id="formUsers">
-			<h1>Usuários</h1>
-			<p:button outcome="/admin/user/addUser.xhtml"
-				value="Adcionar Usuario" />
-			<p:dataTable id="userDT" value="#{userBean.users}" var="user"
-				emptyMessage="Não existe Usuarios Cadastrados">
+		<div class="container ">
+			<h:form id="formUsers">
+				<h1>Usuários</h1>
+				<p:button outcome="/admin/user/addUser.xhtml"
+					value="Adcionar Usuario" />
+				<p:dataTable id="userDT" value="#{userBean.users}" var="user"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+					{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rows="10" rowsPerPageTemplate="5,10,20" resizableColumns="true"
+					reflow="true" paginatorPosition="bottom"
+					emptyMessage="Não existe Usuarios Cadastrados">
 
-			<p:column headerText="ID">
-			#{user.id}
-			</p:column>
-				<p:column headerText="Nome">
-			#{user.name}
-			</p:column>
-				<p:column headerText="Email">
-			#{user.email}
-			</p:column>
-				<p:column headerText="Ações">
-					<p:commandButton action="#{userBean.delete(user)}" value="Excluir"
-						update="userDT" />
-					<p:commandButton value="Editar Usuário" action="#{userBean.editUser}"
-						ajax="false">
-						<f:setPropertyActionListener value="#{user}"
-							target="#{userBean.user}" />
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
-		</h:form>
+					<p:column headerText="ID" sortBy="#{user.id}">
+						<h:outputText value="#{user.id}" />
+					</p:column>
+
+					<p:column headerText="Nome" sortBy="#{user.name}">
+						<h:outputText value="#{user.name}" />
+					</p:column>
+
+					<p:column headerText="Email" sortBy="#{user.email}">
+						<h:outputText value="#{user.email}" />
+
+					</p:column>
+					<p:column headerText="Ações">
+						<p:commandButton value="Editar Usuário" icon="ui-icon-pencil"
+							action="#{userBean.editUser}" ajax="false">
+							<f:setPropertyActionListener value="#{user}"
+								target="#{userBean.user}" />
+						</p:commandButton>
+						<p:commandButton value="Excluir" icon="ui-icon-cancel"
+							action="#{userBean.delete(user)}" update="userDT" />
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+
+
 	</ui:define>
 </ui:composition>
 </html>
