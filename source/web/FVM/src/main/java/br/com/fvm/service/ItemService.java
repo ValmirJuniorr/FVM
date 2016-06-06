@@ -48,7 +48,7 @@ public class ItemService {
 	@DELETE
 	@Produces({ MediaType.TEXT_PLAIN+";charset=UTF-8"})
 	@Consumes("application/json")
-	@Path("/deleteUser/{id}")
+	@Path("/deleteItem/{id}")
 	// @Produces ( MediaType.TEXT_PLAIN )
 	public String deleteItem( @PathParam("id") int id) {
 		Item item=itemDao.getById(id);

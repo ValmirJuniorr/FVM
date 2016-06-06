@@ -1,7 +1,6 @@
 package br.com.fvm.control.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +11,6 @@ import javax.faces.bean.ManagedBean;
 
 import org.primefaces.context.RequestContext;
 
-import br.com.fvm.model.Item;
 import br.com.fvm.model.Product;
 import br.com.fvm.model.dao.ItemDao;
 import br.com.fvm.model.dao.ProductDao;
@@ -26,7 +24,6 @@ public class ProductBean implements Serializable {
 	 */
 	private static final long serialVersionUID = -6361711547368565353L;
 	
-	private List<Item> itemsSelecteds;
 
 	@EJB
 	private ProductDao productDao;
@@ -38,7 +35,6 @@ public class ProductBean implements Serializable {
 	
 	@PostConstruct
 	private void init(){
-		itemsSelecteds=new ArrayList<Item>();
 		product = new Product();
 	}
 	
@@ -52,20 +48,6 @@ public class ProductBean implements Serializable {
 	
 	public List<Product> getProducts() {
 		return productDao.getAll();
-	}
-	
-	public List<Item> getItems() {
-		return itemDao.getAll();
-	}
-	
-	
-
-	public List<Item> getItemsSelecteds() {
-		return itemsSelecteds;
-	}
-
-	public void setItemsSelecteds(List<Item> itemsSelecteds) {
-		this.itemsSelecteds = itemsSelecteds;
 	}
 
 	public void add() {

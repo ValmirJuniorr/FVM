@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -18,23 +16,27 @@
 				emptyMessage="Não existe Items Cadastrados">
 
 				<p:column headerText="ID">
-			#{item.id}
-			</p:column>
+					<h:outputText value="#{item.id}" />
+
+				</p:column>
 				<p:column headerText="Nome">
-			#{item.name}
-			</p:column>
+					<h:outputText value="#{item.name}" />
+
+				</p:column>
 				<p:column headerText="Preço em R$">
-			#{item.price}
-			</p:column>
+					<h:outputText value="#{item.price}" />
+
+				</p:column>
 				<p:column headerText="Descrição">
-			#{item.description}
-			</p:column>
+					<h:outputText value="#{item.description}" />
+
+				</p:column>
 
 				<p:column headerText="Ações">
 					<p:commandButton action="#{itemBean.delete(item)}" value="Excluir"
 						update="itemDT" />
-					<p:commandButton value="Editar Item"
-						action="#{itemBean.editItem}" ajax="false">
+					<p:commandButton value="Editar Item" action="#{itemBean.editItem}"
+						ajax="false">
 						<f:setPropertyActionListener value="#{item}"
 							target="#{itemBean.item}" />
 					</p:commandButton>

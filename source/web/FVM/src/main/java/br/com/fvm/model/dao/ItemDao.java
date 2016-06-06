@@ -29,6 +29,11 @@ public class ItemDao {
 	public List<Item> getAll() {
 		String query="select i from Item i";
 		TypedQuery<Item> items=this.manager.createQuery(query, Item.class);		
+		return items.getResultList();		
+	}
+	public List<Item> getAllEager() {
+		String query="select item from Item item join fetch item.products";
+		TypedQuery<Item> items=this.manager.createQuery(query, Item.class);		
 		return items.getResultList();
 	}
 

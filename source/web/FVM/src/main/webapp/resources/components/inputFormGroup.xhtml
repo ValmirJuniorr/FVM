@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
+<cc:interface >
+	<cc:attribute name="id" required="true" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+</cc:interface>
+
+<cc:implementation>
+	<div class="form-group">
+		<p:outputLabel id="#{cc.attrs.id}Label" for="#{cc.attrs.id}:#{cc.attrs.id}" value="#{cc.attrs.label}: " />
+		<p:inputText id="#{cc.attrs.id}" styleClass="form-control"
+			value="#{cc.attrs.value}"  pt:placeholder="Digite O #{cc.attrs.label}">
+			<cc:insertChildren />
+		</p:inputText>
+		<h:message for="#{cc.attrs.id}" />
+	</div>	
+</cc:implementation>
+</html>

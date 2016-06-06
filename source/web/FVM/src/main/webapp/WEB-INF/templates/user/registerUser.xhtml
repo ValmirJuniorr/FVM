@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:fm="http://java.sun.com/jsf/composite/components">
+
+<ui:composition template="/WEB-INF/templates/tempateDefault.xhtml">
+	<ui:define name="titlePage"> Cadastro de Usuarios</ui:define>
+	<ui:define name="bodyPage">
+		<fm:formRegister id="formAddUser" title="Cadastro de Usuarios">
+			<h:inputHidden value="#{userBean.user.id}" />
+			<fm:inputFormGroup id="name" label="Nome do Usuário"
+				value="#{userBean.user.name}" />
+			<fm:inputFormGroup id="login" label="Login"
+				value="#{userBean.user.login}" />
+			<fm:inputFormGroup id="password" label="Senha"
+				value="#{userBean.user.password}" />
+			<fm:inputFormGroup id="email" label="Email"
+				value="#{userBean.user.email}" />
+			<div class="form-group">
+				<ui:insert name="comands"/>
+			</div>
+		</fm:formRegister>
+	</ui:define>
+</ui:composition>
+
+</html>
