@@ -18,7 +18,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE users(_id INTEGER PRIMARY KEY, " +
+        db.execSQL("CREATE TABLE "+Constants.NAME_TABLE_USER+"(_id INTEGER PRIMARY KEY, " +
                 " name_user TEXT, email_user TEXT,login_user TEXT, password_user TEXT  );");
 
         db.execSQL("CREATE TABLE products(_id INTEGER PRIMARY KEY, " +
