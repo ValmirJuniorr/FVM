@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fm="http://java.sun.com/jsf/composite/components">
+
+<ui:composition template="/WEB-INF/templates/tempateDefault.xhtml">
+	<ui:define name="titlePage"> Cadastro de Produtos</ui:define>
+	<ui:define name="bodyPage">
+		<fm:formRegister id="formAddProduct" title="Cadastro de Produtos">
+			<h:inputHidden value="#{productBean.product.id}" />
+			<fm:inputFormGroup id="product" label="Produto"
+				value="#{productBean.product.name}" />
+			<fm:inputFormGroup id="price" label="Preço"
+				value="#{productBean.product.price}" />
+			<fm:inputFormGroup id="description" label="Descrição"
+				value="#{productBean.product.description}" />
+			<div class="form-group">
+				<ui:insert name="comands" />
+			</div>
+			<div class="container">
+				<p:dataTable id="checkboxDT" var="item" value="#{itemBean.items}"
+					selection="#{productBean.product.items}" rowKey="#{item.id}"
+					style="margin-bottom:0">
+					<f:facet name="header">
+						<h:outputText value=" Selecione os items do produto" />
+					</f:facet>
+					<p:column selectionMode="multiple"
+						style="width:16px;text-align:center" />
+					<p:column headerText="Código">
+						<h:outputText value="#{item.id}" />
+
+					</p:column>
+					<p:column headerText="Nome">
+						<h:outputText value="#{item.name}" />
+
+					</p:column>
+					<p:column headerText="Preço em R$">
+						<h:outputText value="#{item.price}" />
+
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{item.description}" />
+
+					</p:column>
+				</p:dataTable>
+			</div>
+		</fm:formRegister>
+	</ui:define>
+</ui:composition>
+
+</html>

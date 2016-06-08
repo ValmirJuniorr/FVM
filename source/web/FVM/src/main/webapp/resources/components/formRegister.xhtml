@@ -13,17 +13,4 @@
 	<cc:attribute name="id" required="true" />
 </cc:interface>
 
-<cc:implementation>
-	<div class="container ">
-		<h2>#{cc.attrs.title}</h2>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<h:form id="#{cc.attrs.id}">
-				<cc:insertChildren/>
-				</h:form>
-			</div>
-		</div>
-	</div>
-</cc:implementation>
-
 </html>

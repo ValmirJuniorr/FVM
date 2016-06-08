@@ -1,45 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:fm="http://java.sun.com/jsf/composite/components">
-	
-<ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
-	<ui:define name="titlePage"> Cadastro de Itens!</ui:define>
-	<ui:define name="bodyPage">
-		<h2>Editando O Iten: #{itemBean.item.name}</h2>
-		<h:form id="formEditItem">
-			<h:inputHidden value="#{itemBean.item.id}" />
-			<p:panelGrid columns="2">
-				<p:outputLabel for="name" value="Nome do Item: " />
-				<p:inputText id="name" value="#{itemBean.item.name}"
-					pt:placeholder="Digite O nome do Item" />
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-				<p:outputLabel for="price" value="Valor do Item em R$:" />
-				<p:inputText id="price" value="#{itemBean.item.price}"
-					pt:placeholder="Digite o Valor do Item" />
+<ui:composition template="/WEB-INF/templates/item/registerItem.xhtml">
+	<ui:define name="comands">
+		<p:commandButton value="Salvar alterações"
+			actionListener="#{itemBean.update()}" />
 
-				<p:outputLabel for="description" value="Descrição" />
-				<p:inputTextarea id="description"
-					value="#{itemBean.item.description}"
-					pt:placeholder="Digite uma Descrição breve Do item!" />					
-
-			</p:panelGrid>
-			<p:panelGrid columns="2">
-				<p:column>
-					<p:commandButton value="Salvar alterações"
-						actionListener="#{itemBean.update()}" />
-				</p:column>
-				<p:column>
-					<p:commandButton value="Voltar" action="#{itemBean.voltar}"
-						ajax="false" />
-				</p:column>
-			</p:panelGrid>
-
-		</h:form>
+		<p:commandButton value="Voltar" action="#{itemBean.voltar}"
+			ajax="false" />
 	</ui:define>
 </ui:composition>
 </html>

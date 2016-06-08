@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fm="http://java.sun.com/jsf/composite/components">
+
+<ui:composition template="/WEB-INF/templates/tempateDefault.xhtml">
+	<ui:define name="titlePage"> Cadastro de Itens</ui:define>
+	<ui:define name="bodyPage">
+		<fm:formRegister id="formAddItem" title="Cadastro de Itens">
+			<h:inputHidden value="#{itemBean.item.id}" />
+			<fm:inputFormGroup id="name" label="Nome do Item"
+				value="#{itemBean.item.name}" />
+			<fm:inputFormGroup id="price" label="Preço"
+				value="#{itemBean.item.price}" />
+			<fm:inputFormGroup id="description" label="Descrição"
+				value="#{itemBean.item.description}" />
+			<div class="form-group">
+				<ui:insert name="comands"/>
+			</div>
+		</fm:formRegister>
+	</ui:define>
+</ui:composition>
+
+</html>
