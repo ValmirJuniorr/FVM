@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import br.com.fvm.R;
 import br.com.fvm.model.DAO.DataBaseHelper;
@@ -15,6 +18,8 @@ import br.com.fvm.util.HTTPUtils;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextLogin, editTextPassword;
+    TextView textResult;
+    String opa="";
 
     private DataBaseHelper helper;
 
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editTextLogin =(EditText) findViewById(R.id.editTextLogin);
         editTextPassword=(EditText) findViewById(R.id.editTextPassword);
+        textResult=(TextView) findViewById(R.id.textViewResult);
 //        helper = new DataBaseHelper(this);
 //        SQLiteDatabase db = helper. getWritableDatabase();
 //
@@ -39,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public  void login(View view){
-
+        new LoginTask().execute("oi","opa");
     }
 
 
@@ -54,27 +60,26 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String[] doInBackground(String... params) {
             try {
-                String filtro = params[0];
-                if(TextUtils.isEmpty(filtro)){
-                    return null;
-                }
                 String urlLogin = "localhost:8080/FVM/service/user/login" ;
-                String url = Uri.parse(urlLogin + filtro).toString();
-                String conteudo = HTTPUtils.request(url);
+                String url = Uri.parse(urlLogin).toString();
+                //to por aqui;
+                String data="";
+                String conteudo = HTTPUtils.requestPost(url,data);
                if(conteudo.equals("Login successful")){
                    return new String[]{"ok"};
                }
+                return  new String[]{"opa"};
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                return null;
             }
-            return null;
+
         }
 
 
         @Override
         protected void onPostExecute(String[] result) {
             if(result != null){
-
+                textResult.setText(opa);
             }
             dialog.dismiss();
         }
