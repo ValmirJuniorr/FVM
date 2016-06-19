@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = helper. getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values. put("name","Chefe é che né pai");
-        values. put("description","BOM demais");
+        values. put("name","Açai");
+        values. put("description","Bom demais");
         values. put("price",1.2);
         long resultado = db. insert("products", null, values);
 

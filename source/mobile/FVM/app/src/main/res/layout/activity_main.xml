@@ -13,41 +13,4 @@
             android:id="@+id/textView"/>
 
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="395dp"
-            android:layout_height="509dp"
-            android:background="#ffffff">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="61dp"
-                    android:text="Programação Semanal"
-                    android:id="@+id/button"
-                    android:layout_gravity="left|top" />
-
-                <Button
-                    android:layout_width="192dp"
-                    android:layout_height="59dp"
-                    android:text="Nova Viagem"
-                    android:id="@+id/button2"
-                    android:layout_gravity="right|top" />
-
-                <FrameLayout
-                    android:layout_width="388dp"
-                    android:layout_height="447dp"
-                    android:layout_gravity="center_horizontal|bottom">
-
-
-                </FrameLayout>
-        </FrameLayout>
-
-
-
-
 </LinearLayout>

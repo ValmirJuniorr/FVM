@@ -72,7 +72,7 @@ public class ItemService {
 	// @Produces ( MediaType.TEXT_PLAIN )
 	public String getItens( ) {
 		Gson gson = new Gson();
-		return gson.toJson(itemDao.getAll());
+		return gson.toJson(itemDao.getAllEager());
 	}
 	
 
