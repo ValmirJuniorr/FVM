@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -44,6 +45,20 @@ public class UserDao {
 	public void update(User user) {
 		manager.merge(user);
 		
+	}
+
+	@Transactional
+	public boolean autentic(User user) {
+		//String query="select u from User u where";
+		Query query=this.manager.createNamedQuery("User.findByLogin");
+		query.setParameter("login", user.getLogin());
+		User user1=(User) query.getSingleResult();
+		if(user1!=null){
+			if(user1.getPassword().equals(user.getPassword())){
+				return true;
+			}			
+		}		
+		return false;
 	}
 	
 

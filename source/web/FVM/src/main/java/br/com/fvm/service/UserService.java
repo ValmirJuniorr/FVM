@@ -22,6 +22,22 @@ public class UserService {
 	@EJB
 	UserDao userDao;
 	
+	
+	@POST
+	@Produces({ MediaType.TEXT_PLAIN+";charset=UTF-8"})
+	@Consumes("application/json")
+	@Path("/login")
+	// @Produces ( MediaType.TEXT_PLAIN )
+	public String login(String  body) {
+		Gson gson=new Gson();
+		User user=gson.fromJson(body, User.class);
+		if(userDao.autentic(user)){
+			return "Login successful";
+		}else{
+			return "Login failed";
+		}		
+	}
+	
 	@POST
 	@Produces({ MediaType.TEXT_PLAIN+";charset=UTF-8"})
 	@Consumes("application/json")
