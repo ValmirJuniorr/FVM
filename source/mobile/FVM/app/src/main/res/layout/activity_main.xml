@@ -6,44 +6,14 @@
     tools:context=".control.MainActivity"
     android:orientation="vertical">
 
-        <TextView  android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Login:"
-            android:id="@+id/textViewLogin"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editTextLogin" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Password:"
-            android:id="@+id/textViewPassword" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editTextPassword" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Efetuar Login"
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonGoToLogin"
             android:layout_gravity="center_horizontal"
-            android:onClick="login"/>
-        <TextView  android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
-            android:id="@+id/textViewResult"/>
+            android:onClick="goToLogin"/>
+
 
 </LinearLayout>

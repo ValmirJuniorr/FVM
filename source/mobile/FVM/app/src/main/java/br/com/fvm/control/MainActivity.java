@@ -1,6 +1,7 @@
 package br.com.fvm.control;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,10 +12,9 @@ import android.widget.TextView;
 
 import br.com.fvm.R;
 import br.com.fvm.model.DAO.DataBaseHelper;
-import br.com.fvm.util.HTTPUtils;
 
 public class MainActivity extends AppCompatActivity {
-    EditText editTextLogin, editTextPassword;
+
     TextView textResult;
     String opa="";
 
@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editTextLogin =(EditText) findViewById(R.id.editTextLogin);
-        editTextPassword=(EditText) findViewById(R.id.editTextPassword);
-        textResult=(TextView) findViewById(R.id.textViewResult);
 //        helper = new DataBaseHelper(this);
 //        SQLiteDatabase db = helper. getWritableDatabase();
 //
@@ -41,44 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public  void login(View view){
-        new LoginTask().execute("oi","opa");
-    }
-
-    private class LoginTask extends AsyncTask<String, Void, String[]> {
-        ProgressDialog dialog;
-        @Override
-        protected void onPreExecute() {
-            dialog = new ProgressDialog(MainActivity.this);
-            dialog.show();
-        }
-
-        @Override
-        protected String[] doInBackground(String... params) {
-            try {
-                String urlLogin = "localhost:8080/FVM/service/user/login" ;
-                String url = Uri.parse(urlLogin).toString();
-                //to por aqui;
-                String data="";
-                String conteudo = HTTPUtils.requestPost(url,data);
-               if(conteudo.equals("Login successful")){
-                   return new String[]{"ok"};
-               }
-                return  new String[]{"opa"};
-            } catch (Exception e) {
-                return null;
-            }
-
-        }
-
-
-        @Override
-        protected void onPostExecute(String[] result) {
-            if(result != null){
-                textResult.setText(opa);
-            }
-            dialog.dismiss();
-        }
+    public void goToLogin(View view){
+        Intent intent=new Intent(this,LoginActivity.class);
+        startActivity(intent);
     }
 
 }

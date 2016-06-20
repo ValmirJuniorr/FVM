@@ -31,6 +31,7 @@ public class UserService {
 	public String login(String  body) {
 		Gson gson=new Gson();
 		User user=gson.fromJson(body, User.class);
+		System.out.println(body);
 		if(userDao.autentic(user)){
 			return "Login successful";
 		}else{
