@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 String login,password;
                 login=params[0];
                 password=params[1];
-                String urlLogin = "192.168.1.6:8080/FVM/service/user/login" ;
+                String urlLogin = "http://10.30.0.83:8080/FVM/service/user/getOne/12" ;
                 String url = Uri.parse(urlLogin).toString();
                 //to por aqui;
                 Gson gson=new Gson();
