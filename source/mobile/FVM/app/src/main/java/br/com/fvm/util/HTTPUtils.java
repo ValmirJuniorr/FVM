@@ -43,10 +43,10 @@ public class HTTPUtils {
             url = new URL(endereco);
             HttpURLConnection urlc = null;
             urlc = (HttpURLConnection) url.openConnection();
-            /*urlc.setDoOutput(true);
+            urlc.setDoOutput(true);
             urlc.setRequestMethod("POST");
             DataOutputStream dos = new DataOutputStream(urlc.getOutputStream());
-            dos.write(data.getBytes());*/
+            dos.write(data.getBytes());
             InputStream is=urlc.getInputStream();
             Scanner scanner = new Scanner(is);
             String conteudo = scanner. useDelimiter("\\A"). next();
