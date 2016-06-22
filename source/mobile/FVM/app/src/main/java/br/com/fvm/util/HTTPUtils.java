@@ -37,7 +37,7 @@ public class HTTPUtils {
 
     }
 
-    public static String requestPost(String endereco, String data){
+   /* public static String requestPost(String endereco, String data){
         URL url = null;
         try {
             url = new URL(endereco);
@@ -56,7 +56,23 @@ public class HTTPUtils {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
+   public static String requestPost(String endereco, String data){
+       try {
+           HttpURLConnection connection = null;
+
+           URL url = new URL(endereco);
+
+           connection = (HttpURLConnection)url.openConnection();
+
+           InputStream content = connection.getInputStream();
+           return  content.toString();
+
+       } catch (Exception e) {
+           e.printStackTrace();
+           return null;
+       }
+   }
 
     public static String doGet(String urlString){
         Log.i("Metodo Get", "eita porra");

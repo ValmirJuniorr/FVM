@@ -9,35 +9,38 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-<ui:composition template="/WEB-INF/templates/defaultAdmin.xhtml">
-	<ui:define name="titlePage"> Produtos</ui:define>
+<ui:composition template="/WEB-INF/templates/tempateDefault.xhtml">
+	<ui:define name="titlePage"> Lista de Usuários</ui:define>
 	<ui:define name="bodyPage">
-		<h1>Produtos</h1>
-		<p:button outcome="/admin/product/addProduct.xhtml" value="Adcionar Produtos" />
-		<h:form id="formPrducts">
-			<p:dataTable id="productDT" value="#{productBean.products}"
-				var="product" emptyMessage="Não existe Produtos">
-				<p:column headerText="Nome">
-					<h:outputText value="#{product.name}" />
-				</p:column>
-				<p:column headerText="Descrição">
-					<h:outputText value="#{product.description}" />
-				</p:column>
-				<p:column headerText="Preço do Produto">
-					<h:outputText value="#{product.price}" />
-				</p:column>
-				
-				<p:column headerText="Ações">
-					<p:commandButton action="#{productBean.delete(product)}" value="Excluir"
-						update="productDT" />
-					<p:commandButton value="Editar Produto" action="#{productBean.editProduct()}"
-						ajax="false">
-						<f:setPropertyActionListener value="#{product}"
-							target="#{productBean.product}" />
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
-		</h:form>
+		<div class="container ">
+			<h1>Produtos</h1>
+			<p:button outcome="/admin/product/addProduct.xhtml"
+				value="Adcionar Produtos" />
+			<h:form id="formPrducts">
+				<p:dataTable id="productDT" value="#{productBean.products}"
+					var="product" emptyMessage="Não existe Produtos">
+					<p:column headerText="Nome">
+						<h:outputText value="#{product.name}" />
+					</p:column>
+					<p:column headerText="Descrição">
+						<h:outputText value="#{product.description}" />
+					</p:column>
+					<p:column headerText="Preço do Produto">
+						<h:outputText value="#{product.price}" />
+					</p:column>
+
+					<p:column headerText="Ações">
+						<p:commandButton action="#{productBean.delete(product)}"
+							value="Excluir" update="productDT" />
+						<p:commandButton value="Editar Produto"
+							action="#{productBean.editProduct()}" ajax="false">
+							<f:setPropertyActionListener value="#{product}"
+								target="#{productBean.product}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
