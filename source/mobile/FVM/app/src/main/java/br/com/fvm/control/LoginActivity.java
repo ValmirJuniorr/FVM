@@ -1,15 +1,12 @@
 package br.com.fvm.control;
 
 import android.app.ProgressDialog;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -50,17 +47,13 @@ public class LoginActivity extends AppCompatActivity {
                 login=params[0];
                 password=params[1];
 
-                String urlLogin = "http://10.30.0.83:8080/FVM/service/user/getOne/12" ;
-                String url = Uri.parse(urlLogin).toString();
-                //to por aqui;
-//                Gson gson=new Gson();
-//                User user=new User();
-//                user.setLogin(login);
-//                user.setPassword(password);
-//                String data=gson.toJson(user);
-               //String conteudo = HTTPUtils.requestPost(url,data);
-
-                String conteudo=HTTPUtils.doGet(url);
+                String url = "http://10.11.36.135:8080/FVM/service/user/login" ;
+                Gson gson=new Gson();
+                User user=new User();
+                user.setLogin(login);
+                user.setPassword(password);
+                String data=gson.toJson(user);
+                String conteudo= HTTPUtils.requestPost(url,data);
                 if(conteudo.equals("Login successful")){
                     return new String[]{"ok"};
                 }

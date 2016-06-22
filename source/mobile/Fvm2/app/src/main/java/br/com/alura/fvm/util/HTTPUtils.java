@@ -1,4 +1,4 @@
-package br.com.fvm.util;
+package br.com.alura.fvm.util;
 
 import android.util.Log;
 
