@@ -16,11 +16,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".control.LoginActivity"/>
+
         <uses-permission android:name="android.permission.INTERNET" />
 
-        <activity android:name=".control.LoginActivity">
-
-        </activity>
     </application>
 
 </manifest>

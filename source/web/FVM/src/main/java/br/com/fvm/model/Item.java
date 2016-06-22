@@ -32,10 +32,7 @@ public class Item {
 	@ManyToMany(mappedBy = "items")
 	private List<Product> products;
 	
-	@ManyToMany(mappedBy = "itemsAdditional")
-	private List<Product> productsCustom;
-	
-	
+		
 	public int getId() {
 		return id;
 	}
@@ -60,14 +57,5 @@ public class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<Product> getProducts() {
-		return products;
-	}
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
 	
-	
-	
-
 }

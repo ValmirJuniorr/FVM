@@ -3,10 +3,12 @@ package br.com.fvm.control;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,6 +19,7 @@ import br.com.fvm.util.HTTPUtils;
 
 public class LoginActivity extends AppCompatActivity {
     EditText editTextLogin, editTextPassword;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         editTextLogin =(EditText) findViewById(R.id.editTextLogin);
         editTextPassword=(EditText) findViewById(R.id.editTextPassword);
+        textView=(TextView) findViewById(R.id.textResult);
 
     }
 
@@ -45,15 +49,18 @@ public class LoginActivity extends AppCompatActivity {
                 String login,password;
                 login=params[0];
                 password=params[1];
-                String urlLogin = "192.168.1.6:8080/FVM/service/user/login" ;
-                String url = Uri.parse(urlLogin).toString();
+                String url = "http://192.168.1.5:8080/FVM/service/user/getOne/12" ;
+                //String urlLogin = "http://10.0.2.2:8080/FVM/service/user/getAll" ;
+                //String url = Uri.parse(urlLogin).toString();
                 //to por aqui;
-                Gson gson=new Gson();
-                User user=new User();
-                user.setLogin(login);
-                user.setPassword(password);
-                String data=gson.toJson(user);
-                String conteudo = HTTPUtils.requestPost(url,data);
+//                Gson gson=new Gson();
+//                User user=new User();
+//                user.setLogin(login);
+//                user.setPassword(password);
+//                String data=gson.toJson(user);
+               //String conteudo = HTTPUtils.requestPost(url,data);
+
+                String conteudo=HTTPUtils.doGet(url);
                 if(conteudo.equals("Login successful")){
                     return new String[]{"ok"};
                 }
@@ -67,13 +74,9 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String[] result) {
-            if(result != null){
-                Toast toast=Toast.makeText(getApplicationContext(),result[0],Toast.LENGTH_LONG);
-                toast.show();
-            }
+            textView.setText("o resultado foi: "+result[0]);
             dialog.dismiss();
-            Toast toast=Toast.makeText(getApplicationContext(),result[0],Toast.LENGTH_LONG);
-            toast.show();
+
 
         }
     }
