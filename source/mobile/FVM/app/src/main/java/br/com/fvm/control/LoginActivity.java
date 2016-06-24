@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 login=params[0];
                 password=params[1];
 
-                String url = "http://10.11.36.135:8080/FVM/service/user/login" ;
+                String url = "http://10.30.0.83:8080/FVM/service/user/login" ;
                 Gson gson=new Gson();
                 User user=new User();
                 user.setLogin(login);

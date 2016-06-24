@@ -24,14 +24,13 @@ public class UserService {
 	
 	
 	@POST
-	@Produces({ MediaType.TEXT_PLAIN+";charset=UTF-8"})
+	@Produces({MediaType.APPLICATION_JSON+";charset=UTF-8"})
 	@Consumes("application/json")
 	@Path("/login")
 	// @Produces ( MediaType.TEXT_PLAIN )
 	public String login(String  body) {
 		Gson gson=new Gson();
 		User user=gson.fromJson(body, User.class);
-		System.out.println(body);
 		if(userDao.autentic(user)){
 			return "Login successful";
 		}else{

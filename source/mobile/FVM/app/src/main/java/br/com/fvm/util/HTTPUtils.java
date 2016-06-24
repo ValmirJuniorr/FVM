@@ -37,6 +37,7 @@ public class HTTPUtils {
        try {
            URL url=new URL(urlRequest);
            httpURLConnection=(HttpURLConnection) url.openConnection();
+
            httpURLConnection.setRequestMethod("POST");
            httpURLConnection.setRequestProperty("Accept", "application/json");
 
@@ -46,8 +47,6 @@ public class HTTPUtils {
            outputStream.write(data.getBytes());
            outputStream.flush();
 
-           //OutputStream outputStream=httpURLConnection.getOutputStream();
-           //outputStream.write(data.getBytes());
 
            Scanner scanner=new Scanner(httpURLConnection.getInputStream()).useDelimiter("\\Z");
            String result=scanner.next();

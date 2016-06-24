@@ -49,16 +49,24 @@ public class UserDao {
 
 	@Transactional
 	public boolean autentic(User user) {
-		//String query="select u from User u where";
 		Query query=this.manager.createNamedQuery("User.findByLogin");
 		query.setParameter("login", user.getLogin());
-		User user1=(User) query.getSingleResult();
-		if(user1!=null){
-			if(user1.getPassword().equals(user.getPassword())){
-				return true;
-			}			
-		}		
+		List users = query.getResultList();
+		if(!users.isEmpty()){
+			user=(User) users.get(0);
+			return true;
+		}
 		return false;
+		
+//		TypedQuery<User> queryUserLogin=(TypedQuery<User>) this.manager.createNamedQuery("User.findByLogin");
+//		queryUserLogin.setParameter("login", user.getLogin());
+//		List<User> users=queryUserLogin.getResultList();
+//		if(!users.isEmpty()){
+//			user=users.get(0);
+//			return true;
+//		}
+//		return false;
+		
 	}
 	
 
